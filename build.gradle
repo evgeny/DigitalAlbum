@@ -10,6 +10,10 @@ buildscript {
         materialVersion = '1.0.0'
         supportLibraryVersion = '1.0.2'
         lifecycleVersion = '2.0.0'
+        uiAutomatorVersion = '2.2.0-alpha4'
+        coreTestingVersion = '2.0.0'
+        espressoVersion = '3.1.0-alpha4'
+        junitVersion = '4.12'
     }
 
     repositories {
