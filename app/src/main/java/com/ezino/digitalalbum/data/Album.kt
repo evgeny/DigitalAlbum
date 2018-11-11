@@ -1,4 +1,4 @@
-package com.ezino.digitalalbum
+package com.ezino.digitalalbum.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -10,5 +10,5 @@ data class Album(
     @PrimaryKey @ColumnInfo(name = "id") val albumId: String,
     val name: String,
     val description: String,
-    val updateTime: Date
+    val updateTime: Calendar
 )
