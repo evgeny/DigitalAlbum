@@ -1,5 +1,6 @@
 package com.ezino.digitalalbum.data
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 import androidx.test.InstrumentationRegistry
@@ -8,6 +9,7 @@ import org.hamcrest.Matchers.equalTo
 import org.junit.After
 import org.junit.Assert.assertThat
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.util.*
@@ -26,6 +28,9 @@ class AlbumDaoTest {
     private val album2 = Album("2", "test2", "test2 description", Calendar.getInstance().apply {
         set(2017, 3, 12, 3, 30, 44)
     })
+
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun createDb() {
