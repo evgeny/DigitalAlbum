@@ -56,6 +56,17 @@ class AlbumDaoTest {
         assertThat(albums[0], equalTo(album2))
     }
 
+    @Test
+    fun updateAlbum() {
+        val newName = "updated name"
+        var updatedAlbum = album1.copy(name = newName)
+        albumDao.updateAlbum(updatedAlbum)
+
+        updatedAlbum = getValue(albumDao.getAlbum(updatedAlbum.albumId))
+
+        assertThat(updatedAlbum.name, equalTo(newName))
+    }
+
     @Throws(InterruptedException::class)
     fun <T> getValue(liveData: LiveData<T>): T {
         val data = arrayOfNulls<Any>(1)

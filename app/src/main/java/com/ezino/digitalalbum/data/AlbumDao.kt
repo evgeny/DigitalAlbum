@@ -1,10 +1,7 @@
 package com.ezino.digitalalbum.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface AlbumDao {
@@ -13,4 +10,10 @@ interface AlbumDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insertNew(album: Album)
+
+    @Update(onConflict = OnConflictStrategy.ABORT)
+    fun updateAlbum(album: Album)
+
+    @Query("SELECT * FROM albums WHERE id = :albumId")
+    fun getAlbum(albumId: String): LiveData<Album>
 }
