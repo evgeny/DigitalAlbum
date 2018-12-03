@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
+import com.ezino.digitalalbum.di.Injectors
+import com.ezino.digitalalbum.viewmodels.AlbumListViewModel
 import com.google.android.material.snackbar.Snackbar
 
 import kotlinx.android.synthetic.main.activity_album_collection.*
@@ -15,9 +18,11 @@ class AlbumCollectionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_album_collection)
         setSupportActionBar(toolbar)
 
+        val factory = Injectors.provideAlbumListViewModelFactory(application)
+        val viewModel = ViewModelProviders.of(this, factory).get(AlbumListViewModel::class.java)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
         }
     }
 
