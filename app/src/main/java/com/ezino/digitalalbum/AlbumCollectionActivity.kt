@@ -28,6 +28,7 @@ class AlbumCollectionActivity : AppCompatActivity() {
         album_list.adapter = adapter
         viewModel.getAlbums().observe(this, Observer { albums -> if (albums != null) adapter.submitList(albums) })
         fab.setOnClickListener { view ->
+            viewModel.addAlbumToCollection()
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
