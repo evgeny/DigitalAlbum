@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_collection"
+    app:startDestination="@id/collectionFragment">
+
+    <fragment
+        android:id="@+id/albumFormFragment"
+        android:name="com.ezino.digitalalbum.AlbumFormFragment"
+        android:label="AlbumFormFragment" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/collectionFragment"
+        android:name="com.ezino.digitalalbum.CollectionFragment"
+        android:label="CollectionFragment" >
+        <action
+            android:id="@+id/action_collectionFragment_to_albumFormFragment"
+            app:destination="@id/albumFormFragment" />
+    </fragment>
+
+</navigation>

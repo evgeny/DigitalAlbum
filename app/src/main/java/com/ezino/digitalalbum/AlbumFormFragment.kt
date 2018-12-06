@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.album_form_fragment.*
 class AlbumFormFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val layout = inflater.inflate(R.layout.album_form_fragment, container, true)
+        val layout = inflater.inflate(R.layout.album_form_fragment, container, false)
         val model =
             ViewModelProviders.of(this, activity?.application?.let { Injectors.provideAlbumFormViewModelFactory(it) })
                 .get(AlbumFormViewModel::class.java)
