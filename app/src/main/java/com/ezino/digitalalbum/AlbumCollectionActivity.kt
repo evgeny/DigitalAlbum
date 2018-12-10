@@ -4,20 +4,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import com.ezino.digitalalbum.adapters.AlbumAdapter
-import com.ezino.digitalalbum.di.Injectors
-import com.ezino.digitalalbum.viewmodels.AlbumListViewModel
-import com.google.android.material.snackbar.Snackbar
-
 import kotlinx.android.synthetic.main.activity_album_collection.*
-import kotlinx.android.synthetic.main.content_album_collection.*
 
 class AlbumCollectionActivity : AppCompatActivity() {
     private lateinit var navController: NavController
