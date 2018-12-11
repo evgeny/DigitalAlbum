@@ -18,4 +18,11 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         tools:text="sample description" />
+
+    <Button
+        android:id="@+id/create_album_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Create" />
 </LinearLayout>
