@@ -11,9 +11,6 @@ import com.ezino.digitalalbum.data.Album
 import com.ezino.digitalalbum.di.Injectors
 import com.ezino.digitalalbum.viewmodels.AlbumFormViewModel
 import kotlinx.android.synthetic.main.album_form_fragment.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.util.*
 
 class AlbumFormFragment : Fragment() {
@@ -37,16 +34,14 @@ class AlbumFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         create_album_btn.setOnClickListener {
-            GlobalScope.launch {
-                viewModel.addAlbum(
-                    Album(
-                        "0",
-                        album_title.text.toString(),
-                        album_description.text.toString(),
-                        Calendar.getInstance()
-                    )
+            viewModel.addAlbum(
+                Album(
+                    "0",
+                    album_title.text.toString(),
+                    album_description.text.toString(),
+                    Calendar.getInstance()
                 )
-            }
+            )
         }
     }
 }
