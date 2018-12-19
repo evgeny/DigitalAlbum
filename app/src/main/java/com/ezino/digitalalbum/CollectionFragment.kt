@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ezino.digitalalbum.adapters.AlbumAdapter
 import com.ezino.digitalalbum.di.Injectors
 import com.ezino.digitalalbum.viewmodels.AlbumListViewModel
-import kotlinx.android.synthetic.main.content_album_collection.*
 
 /**
  * A simple [Fragment] subclass.
@@ -36,8 +37,10 @@ class CollectionFragment : Fragment() {
 
         val adapter = AlbumAdapter()
         viewModel.getAlbums().observe(this, Observer { albums -> if (albums != null) adapter.submitList(albums) })
-        album_list.apply {
+        val recyclerView = view.findViewById(R.id.album_list) as RecyclerView
+        recyclerView.apply {
             setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this.context)
             this.adapter = adapter
         }
     }
