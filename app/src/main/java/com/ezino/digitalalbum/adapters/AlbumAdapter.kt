@@ -10,8 +10,11 @@ import com.ezino.digitalalbum.R
 import com.ezino.digitalalbum.data.Album
 
 class AlbumAdapter : ListAdapter<Album, AlbumAdapter.ViewHolder>(AlbumDiffCallback()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.album_card, parent, false))
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.album_card, parent, false)
+
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

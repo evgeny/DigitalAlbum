@@ -18,16 +18,8 @@ class AlbumCollectionActivity : AppCompatActivity() {
 
         navController = Navigation.findNavController(this, R.id.collection_nav_fragment)
 
-//        val factory = Injectors.provideAlbumListViewModelFactory(application)
-//        val viewModel = ViewModelProviders.of(this, factory).get(AlbumListViewModel::class.java)
-
-//        val adapter = AlbumAdapter()
-//        album_list.adapter = adapter
-//        viewModel.getAlbums().observe(this, Observer { albums -> if (albums != null) adapter.submitList(albums) })
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener {
             navController.navigate(R.id.action_collectionFragment_to_albumFormFragment)
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
         }
     }
 

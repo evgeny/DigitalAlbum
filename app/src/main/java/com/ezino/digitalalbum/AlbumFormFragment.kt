@@ -36,7 +36,7 @@ class AlbumFormFragment : Fragment() {
         create_album_btn.setOnClickListener {
             viewModel.addAlbum(
                 Album(
-                    "0",
+                    0,
                     album_title.text.toString(),
                     album_description.text.toString(),
                     Calendar.getInstance()

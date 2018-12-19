@@ -25,6 +25,8 @@ class AlbumFormViewModel internal constructor(private val albumRepository: Album
             withContext(Dispatchers.IO) {
                 albumRepository.addAlbum(album)
             }
+
+            // TODO show snackbar
         }
     }
 

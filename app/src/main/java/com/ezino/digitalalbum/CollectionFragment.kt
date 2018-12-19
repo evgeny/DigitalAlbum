@@ -35,7 +35,10 @@ class CollectionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = AlbumAdapter()
-        album_list.adapter = adapter
         viewModel.getAlbums().observe(this, Observer { albums -> if (albums != null) adapter.submitList(albums) })
+        album_list.apply {
+            setHasFixedSize(true)
+            this.adapter = adapter
+        }
     }
 }

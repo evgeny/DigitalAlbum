@@ -7,7 +7,7 @@ import java.util.*
 
 @Entity(tableName = "albums")
 data class Album(
-    @PrimaryKey @ColumnInfo(name = "id") val albumId: String,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val albumId: Int,
     val name: String,
     val description: String,
     val updateTime: Calendar
