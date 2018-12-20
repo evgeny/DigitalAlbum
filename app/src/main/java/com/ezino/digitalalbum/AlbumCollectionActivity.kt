@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.activity_album_collection.*
 
 class AlbumCollectionActivity : AppCompatActivity() {
@@ -14,13 +15,14 @@ class AlbumCollectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album_collection)
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
+        val finalHost = NavHostFragment.create(R.navigation.nav_collection)
+//        supportFragmentManager.beginTransaction()
+//            .add(finalHost, "navigation_host_fragment")
+//            .setPrimaryNavigationFragment(finalHost) // this is the equivalent to app:defaultNavHost="true"
+//            .commit()
         navController = Navigation.findNavController(this, R.id.collection_nav_fragment)
-
-        fab.setOnClickListener {
-            navController.navigate(R.id.action_collectionFragment_to_albumFormFragment)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

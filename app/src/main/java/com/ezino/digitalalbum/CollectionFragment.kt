@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ezino.digitalalbum.adapters.AlbumAdapter
 import com.ezino.digitalalbum.di.Injectors
 import com.ezino.digitalalbum.viewmodels.AlbumListViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
  * A simple [Fragment] subclass.
@@ -42,6 +44,11 @@ class CollectionFragment : Fragment() {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this.context)
             this.adapter = adapter
+        }
+
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            Navigation.createNavigateOnClickListener(R.id.action_collectionFragment_to_albumFormFragment)
+//            navController.navigate(R.id.action_collectionFragment_to_albumFormFragment)
         }
     }
 }
