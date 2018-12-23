@@ -46,9 +46,7 @@ class CollectionFragment : Fragment() {
             this.adapter = adapter
         }
 
-        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-            Navigation.createNavigateOnClickListener(R.id.action_collectionFragment_to_albumFormFragment)
-//            navController.navigate(R.id.action_collectionFragment_to_albumFormFragment)
-        }
+        val addAlbumButton = view.findViewById<FloatingActionButton>(R.id.fab)
+        addAlbumButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_collectionFragment_to_albumFormFragment))
     }
 }
