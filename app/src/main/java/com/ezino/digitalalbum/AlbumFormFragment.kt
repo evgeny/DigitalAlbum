@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.ezino.digitalalbum.data.Album
 import com.ezino.digitalalbum.di.Injectors
 import com.ezino.digitalalbum.viewmodels.AlbumFormViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.album_form_fragment.*
 import java.util.*
 
@@ -24,7 +25,7 @@ class AlbumFormFragment : Fragment() {
                     this,
                     activity?.application?.let { Injectors.provideAlbumFormViewModelFactory(it) })
                     .get(AlbumFormViewModel::class.java)
-        viewModel.tile().observe(this, Observer { title -> album_title.setText(title) })
+        viewModel.title().observe(this, Observer { title -> album_title.setText(title) })
 
 
         return layout
@@ -42,6 +43,8 @@ class AlbumFormFragment : Fragment() {
                     Calendar.getInstance()
                 )
             )
+
+            Snackbar.make(it, "new album is created", Snackbar.LENGTH_LONG).show()
         }
     }
 }

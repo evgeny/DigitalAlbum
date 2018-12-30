@@ -4,17 +4,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ezino.digitalalbum.data.Album
 import com.ezino.digitalalbum.data.AlbumRepository
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 
 class AlbumFormViewModel internal constructor(private val albumRepository: AlbumRepository) : ViewModel() {
+    // coroutine
     private val viewModelJob = Job()
-
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     // state
     private val titleHolder: MutableLiveData<String> = MutableLiveData()
+    public fun title() = titleHolder
 
-    public fun tile() = titleHolder
+    // behaviour
+
     public fun updateTitle(title: String) {
         titleHolder.value = title
     }
@@ -26,7 +29,7 @@ class AlbumFormViewModel internal constructor(private val albumRepository: Album
                 albumRepository.addAlbum(album)
             }
 
-            // TODO show snackbar
+            // TODO navigate back
         }
     }
 

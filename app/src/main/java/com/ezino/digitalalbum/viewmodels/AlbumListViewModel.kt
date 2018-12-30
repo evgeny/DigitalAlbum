@@ -8,7 +8,7 @@ class AlbumListViewModel internal constructor(private val albumRepository: Album
 
     private val albumList = albumRepository.getAlbums()
 
-    public fun getAlbums() = albumList
+    fun getAlbums() = albumList
 
-    public fun add(album: Album) = albumRepository.addAlbum(album)
+    fun add(album: Album) = albumRepository.addAlbum(album)
 }
