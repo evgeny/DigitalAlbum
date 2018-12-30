@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.ezino.digitalalbum.data.Album
 import com.ezino.digitalalbum.di.Injectors
@@ -46,7 +45,7 @@ class AlbumFormFragment : Fragment() {
                 )
             )
 
-            Snackbar.make(it, "new album is created", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(it, getString(R.string.album_created), Snackbar.LENGTH_LONG).show()
             findNavController().popBackStack()
         }
     }

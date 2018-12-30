@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/Widget.MaterialComponents.CardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.MaterialComponents.CardView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <ImageView
-                android:layout_width="344dp"
-                android:layout_height="194dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="194dp"
+            android:adjustViewBounds="true" />
 
         <TextView
-                android:id="@+id/title"
-                android:textSize="21sp"
-                android:textStyle="bold"
-                android:textColor="#232F34"
-                android:gravity="bottom"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:text="Title"/>
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:gravity="bottom"
+            android:text="Title"
+            android:textColor="#232F34"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
         <TextView
-                android:textColor="#232F34"
-                android:text="My beast IPA beers"
-                android:gravity="bottom"
-                android:textSize="17sp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="bottom"
+            android:text="My beast IPA beers"
+            android:textColor="#232F34"
+            android:textSize="17sp" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
