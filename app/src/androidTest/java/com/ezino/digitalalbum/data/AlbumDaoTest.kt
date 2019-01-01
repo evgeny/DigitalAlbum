@@ -21,11 +21,11 @@ class AlbumDaoTest {
     private lateinit var database: AppDatabase
     private lateinit var albumDao: AlbumDao
 
-    private val album1 = Album("1", "test1", "test1 description", Calendar.getInstance().apply {
+    private val album1 = Album(1, "test1", "test1 description", Calendar.getInstance().apply {
         set(2017, 1, 1, 11, 11, 11)
     })
 
-    private val album2 = Album("2", "test2", "test2 description", Calendar.getInstance().apply {
+    private val album2 = Album(2, "test2", "test2 description", Calendar.getInstance().apply {
         set(2018, 3, 12, 3, 30, 44)
     })
 

@@ -15,5 +15,5 @@ interface AlbumDao {
     fun updateAlbum(album: Album)
 
     @Query("SELECT * FROM albums WHERE id = :albumId")
-    fun getAlbum(albumId: String): LiveData<Album>
+    fun getAlbum(albumId: Int): LiveData<Album>
 }
