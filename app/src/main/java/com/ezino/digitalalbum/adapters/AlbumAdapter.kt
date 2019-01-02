@@ -21,9 +21,11 @@ class AlbumAdapter : ListAdapter<Album, AlbumAdapter.ViewHolder>(AlbumDiffCallba
         val album = getItem(position)
 
         holder.nameView.text = album.name
+        holder.descriptionView.text = album.description
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameView: TextView = itemView.findViewById(R.id.title)
+        val descriptionView: TextView = itemView.findViewById(R.id.description)
     }
 }
