@@ -21,11 +21,11 @@ class AlbumDaoTest {
     private lateinit var database: AppDatabase
     private lateinit var albumDao: AlbumDao
 
-    private val album1 = Album(1, "test1", "test1 description", Calendar.getInstance().apply {
+    private val album1 = Album(1, "album #1", "album #1 description", Calendar.getInstance().apply {
         set(2017, 1, 1, 11, 11, 11)
     })
 
-    private val album2 = Album(2, "test2", "test2 description", Calendar.getInstance().apply {
+    private val album2 = Album(2, "album #2", "album #2 description", Calendar.getInstance().apply {
         set(2018, 3, 12, 3, 30, 44)
     })
 
@@ -65,6 +65,20 @@ class AlbumDaoTest {
         updatedAlbum = getValue(albumDao.getAlbum(updatedAlbum.albumId))
 
         assertThat(updatedAlbum.name, equalTo(newName))
+    }
+
+    @Test(expected = android.database.sqlite.SQLiteConstraintException::class)
+    fun addSameAlbum() {
+        albumDao.insertNew(album1)
+        val albums = getValue(albumDao.getAlbums())
+        assertThat(albums.size, equalTo(2))
+    }
+
+    @Test
+    fun addNewAlbum() {
+        albumDao.insertNew(Album(3, "album #3", "album #3 description", Calendar.getInstance()))
+        val albums = getValue(albumDao.getAlbums())
+        assertThat(albums.size, equalTo(3))
     }
 
     @Throws(InterruptedException::class)
