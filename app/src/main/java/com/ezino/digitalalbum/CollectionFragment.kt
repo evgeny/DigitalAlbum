@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ezino.digitalalbum.adapters.AlbumAdapter
@@ -37,7 +38,7 @@ class CollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = AlbumAdapter()
+        val adapter = AlbumAdapter(View.OnClickListener { v -> createClickListener(v.tag as Int) })
         viewModel.getAlbums().observe(this, Observer { albums -> if (albums != null) adapter.submitList(albums) })
         val recyclerView = view.findViewById(R.id.album_list) as RecyclerView
         recyclerView.apply {
@@ -49,4 +50,7 @@ class CollectionFragment : Fragment() {
         val addAlbumButton = view.findViewById<FloatingActionButton>(R.id.fab)
         addAlbumButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_collectionFragment_to_albumFormFragment))
     }
+
+    private fun createClickListener(albumId: Int = -1) = NavHostFragment.findNavController(this)
+        .navigate(R.id.albumFormFragment, Bundle(1).apply { putInt("albumId", albumId) })
 }

@@ -31,6 +31,15 @@ class AlbumFormViewModel internal constructor(private val albumRepository: Album
         // TODO show notification
     }
 
+    fun getAlbum(id: Int) = launch {
+        withContext(Dispatchers.IO) {
+            val album = albumRepository.findAlbum(id)
+        }
+
+        // update ui
+//        titleHolder.value = al
+    }
+
 
     override fun onCleared() {
         super.onCleared()

@@ -21,13 +21,14 @@ class AlbumFormFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layout = inflater.inflate(R.layout.album_form_fragment, container, false)
+        val albumId = arguments?.getInt("albumId") ?: -1
         viewModel =
                 ViewModelProviders.of(
                     this,
                     activity?.application?.let { Injectors.provideAlbumFormViewModelFactory(it) })
                     .get(AlbumFormViewModel::class.java)
         viewModel.title().observe(this, Observer { title -> album_title.setText(title) })
-
+        viewModel.getAlbum(albumId)
 
         return layout
     }

@@ -15,4 +15,6 @@ class AlbumRepository private constructor(private val albumDao: AlbumDao) {
     fun updateAlbum(album: Album) = albumDao.updateAlbum(album)
 
     fun getAlbums() = albumDao.getAlbums()
+
+    fun findAlbum(albumId: Int) = albumDao.getAlbum(albumId)
 }
