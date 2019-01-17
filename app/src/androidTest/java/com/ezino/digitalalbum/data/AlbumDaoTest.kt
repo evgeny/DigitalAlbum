@@ -6,11 +6,8 @@ import androidx.room.Room
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import org.hamcrest.Matchers.equalTo
-import org.junit.After
-import org.junit.Assert.assertThat
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
+import org.junit.Assert.*
 import org.junit.runner.RunWith
 import java.util.*
 import java.util.concurrent.CountDownLatch
@@ -79,6 +76,19 @@ class AlbumDaoTest {
         albumDao.insertNew(Album(3, "album #3", "album #3 description", Calendar.getInstance()))
         val albums = getValue(albumDao.getAlbums())
         assertThat(albums.size, equalTo(3))
+    }
+
+    @Test
+    fun findAlbum_Failed() {
+        var album = getValue(albumDao.getAlbum(0))
+        assertNull("the album with id=0 should not exist", album)
+    }
+
+    @Test
+    fun findAlbum_Success() {
+        var album = getValue(albumDao.getAlbum(1))
+        assertNotNull("the album with id=1 is not found", album)
+        assertThat(album.name, equalTo("album #1"))
     }
 
     @Throws(InterruptedException::class)
