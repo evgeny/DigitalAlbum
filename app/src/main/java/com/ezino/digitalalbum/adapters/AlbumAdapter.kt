@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ezino.digitalalbum.R
 import com.ezino.digitalalbum.data.Album
 
-class AlbumAdapter(private val clickListener:View.OnClickListener) : ListAdapter<Album, AlbumAdapter.ViewHolder>(AlbumDiffCallback()) {
+class AlbumAdapter(private val clickListener: View.OnClickListener) :
+    ListAdapter<Album, AlbumAdapter.ViewHolder>(AlbumDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.album_card, parent, false)
@@ -21,7 +22,7 @@ class AlbumAdapter(private val clickListener:View.OnClickListener) : ListAdapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val album = getItem(position)
 
-        holder.itemView.tag = position
+        holder.itemView.tag = album.albumId
         holder.nameView.text = album.name
         holder.descriptionView.text = album.description
     }

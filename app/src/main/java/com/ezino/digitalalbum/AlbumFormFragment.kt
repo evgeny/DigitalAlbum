@@ -27,8 +27,8 @@ class AlbumFormFragment : Fragment() {
                     this,
                     activity?.application?.let { Injectors.provideAlbumFormViewModelFactory(it) })
                     .get(AlbumFormViewModel::class.java)
-        viewModel.title().observe(this, Observer { title -> album_title.setText(title) })
-        viewModel.getAlbum(albumId)
+        viewModel.getAlbumName(albumId).observe(this, Observer { title -> album_title.setText(title) })
+        viewModel.getAlbumDescription(albumId).observe(this, Observer { title -> album_description.setText(title) })
 
         return layout
     }

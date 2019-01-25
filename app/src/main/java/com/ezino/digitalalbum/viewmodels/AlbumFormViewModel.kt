@@ -1,6 +1,7 @@
 package com.ezino.digitalalbum.viewmodels
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.ezino.digitalalbum.data.Album
 import com.ezino.digitalalbum.data.AlbumRepository
@@ -13,12 +14,13 @@ class AlbumFormViewModel internal constructor(private val albumRepository: Album
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + SupervisorJob()
 
-    // state
-    private val titleHolder: MutableLiveData<String> = MutableLiveData()
 
-    public fun title() = titleHolder
-    public fun updateTitle(title: String) {
-        titleHolder.value = title
+    fun getAlbumName(albumId: Int): LiveData<String> {
+        return Transformations.map(albumRepository.findAlbum(albumId)) { a -> a.name }
+    }
+
+    fun getAlbumDescription(albumId: Int): LiveData<String> {
+        return Transformations.map(albumRepository.findAlbum(albumId)) { a -> a.description }
     }
 
     // behavior
@@ -30,16 +32,6 @@ class AlbumFormViewModel internal constructor(private val albumRepository: Album
         // TODO navigate back
         // TODO show notification
     }
-
-    fun getAlbum(id: Int) = launch {
-        withContext(Dispatchers.IO) {
-            val album = albumRepository.findAlbum(id)
-        }
-
-        // update ui
-//        titleHolder.value = al
-    }
-
 
     override fun onCleared() {
         super.onCleared()
