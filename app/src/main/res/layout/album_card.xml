@@ -2,8 +2,9 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.MaterialComponents.CardView"
-    android:layout_width="match_parent"
+    android:layout_width="344dp"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
     android:layout_marginLeft="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginRight="8dp">
@@ -37,6 +38,23 @@
             android:textColor="#232F34"
             android:textSize="17sp"
             tools:text="Collect and rate the beers sorts I ever taste" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"/>
+        </LinearLayout>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

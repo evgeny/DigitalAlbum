@@ -8,7 +8,7 @@ interface AlbumDao {
     @Query("SELECT * FROM albums ORDER BY updateTime DESC")
     fun getAlbums(): LiveData<List<Album>>
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNew(album: Album)
 
     @Update(onConflict = OnConflictStrategy.ABORT)
