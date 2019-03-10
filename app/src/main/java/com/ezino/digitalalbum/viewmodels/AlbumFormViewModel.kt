@@ -16,11 +16,11 @@ class AlbumFormViewModel internal constructor(private val albumRepository: Album
 
 
     fun getAlbumName(albumId: Int): LiveData<String> {
-        return Transformations.map(albumRepository.findAlbum(albumId)) { a -> a.name }
+        return Transformations.map(albumRepository.findAlbum(albumId)) { a -> a?.name ?: "" }
     }
 
     fun getAlbumDescription(albumId: Int): LiveData<String> {
-        return Transformations.map(albumRepository.findAlbum(albumId)) { a -> a.description }
+        return Transformations.map(albumRepository.findAlbum(albumId)) { a -> a?.description ?: "" }
     }
 
     // behavior
