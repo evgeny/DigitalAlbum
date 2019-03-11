@@ -38,7 +38,17 @@ class CollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = AlbumAdapter(View.OnClickListener { v -> createClickListener(v.tag as Int) })
+        val adapter = AlbumAdapter(object : AlbumAdapter.AlbumCardClickListener {
+            override fun onClickDelete(v: View, position: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onClickEdit(v: View, position: Int) {
+                NavHostFragment.findNavController(this@CollectionFragment)
+                    .navigate(R.id.albumFormFragment, Bundle(1).apply { putInt("albumId", v.tag as Int) })
+            }
+
+        })
         viewModel.getAlbums().observe(this, Observer { albums -> if (albums != null) adapter.submitList(albums) })
         val recyclerView = view.findViewById(R.id.album_list) as RecyclerView
         recyclerView.apply {
@@ -50,7 +60,4 @@ class CollectionFragment : Fragment() {
         val addAlbumButton = view.findViewById<FloatingActionButton>(R.id.fab)
         addAlbumButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_collectionFragment_to_albumFormFragment))
     }
-
-    private fun createClickListener(albumId: Int = -1) = NavHostFragment.findNavController(this)
-        .navigate(R.id.albumFormFragment, Bundle(1).apply { putInt("albumId", albumId) })
 }
