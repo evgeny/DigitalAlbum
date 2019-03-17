@@ -40,7 +40,7 @@ class CollectionFragment : Fragment() {
 
         val adapter = AlbumAdapter(object : AlbumAdapter.AlbumCardClickListener {
             override fun onClickDelete(v: View, position: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                viewModel.delete(v.tag as Int)
             }
 
             override fun onClickEdit(v: View, position: Int) {

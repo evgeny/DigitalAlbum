@@ -15,7 +15,6 @@ class AlbumAdapter(private val clickListener: AlbumCardClickListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.album_card, parent, false)
-//        itemView.setOnClickListener(clickListener)
 
         return ViewHolder(itemView)
     }
@@ -27,6 +26,7 @@ class AlbumAdapter(private val clickListener: AlbumCardClickListener) :
         holder.nameView.text = album.name
         holder.descriptionView.text = album.description
 
+        holder.deleteButton.tag = album.albumId
         holder.deleteButton.setOnClickListener { v -> clickListener.onClickDelete(v, position) }
         holder.itemView.setOnClickListener { v -> clickListener.onClickEdit(v, position) }
     }

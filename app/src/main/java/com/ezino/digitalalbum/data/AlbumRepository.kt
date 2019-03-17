@@ -17,4 +17,6 @@ class AlbumRepository private constructor(private val albumDao: AlbumDao) {
     fun getAlbums() = albumDao.getAlbums()
 
     fun findAlbum(albumId: Int) = albumDao.getAlbum(albumId)
+
+    fun deleteAlbum(album: Album) = albumDao.deleteAlbum(album)
 }
